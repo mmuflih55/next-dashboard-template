@@ -1,9 +1,8 @@
 import Head from "next/head";
-import { Container } from "@material-ui/core";
 import useAuth from "Utils/firebase/helper";
 import Users from "@/modules/Users";
 
-export default function Home() {
+export default function UsersPage() {
   return (
     <div className="container">
       <Head>

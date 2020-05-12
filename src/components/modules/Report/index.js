@@ -1,8 +1,9 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Base from "@/layout/DashBoardBase";
 import { Grid, Paper, makeStyles } from "@material-ui/core";
 import Title from "@/ui/Title";
-import Chart from "./chart";
+const Chart = dynamic(import("./chart"));
 const useStyles = makeStyles((theme) => ({
   depositContext: {
     flex: 1,

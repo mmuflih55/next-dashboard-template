@@ -1,6 +1,7 @@
 import React from "react";
 import Base from "@/layout/DashBoardBase";
-import Deposit from "@/modules/Deposit";
+import dynamic from "next/dynamic";
+const Deposit = dynamic(import("@/modules/Deposit"));
 import { Grid } from "@material-ui/core";
 export default function Dashboard() {
   return (

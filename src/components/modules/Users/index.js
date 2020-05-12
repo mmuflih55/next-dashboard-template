@@ -1,6 +1,7 @@
 import React from "react";
+import dynamic from "next/dynamic";
 import Base from "@/layout/DashBoardBase";
-import UList from "./UserList";
+const UList = dynamic(import("./UserList"));
 import { Grid, Paper, makeStyles } from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   depositContext: {
