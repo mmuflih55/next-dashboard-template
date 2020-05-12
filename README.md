@@ -1,5 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/zeit/next.js/tree/canary/packages/create-next-app).
 
+Dashboard Template with Next.js and material UI, auth with firebase and chart using rechart
+
 ## Getting Started
 
 First, run the development server:
