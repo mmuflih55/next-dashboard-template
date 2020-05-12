@@ -17,17 +17,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Report({ id }) {
+export default function Report({ page }) {
   const classes = useStyles();
 
   return (
     <Base>
       <Title>Recent Deposits</Title>
-
       <Grid container spacing={3}>
         <Grid item xs={12} md={12} lg={12}>
           <Paper className={classes.paper}>
-            <Chart id={id} />
+            <Chart page={page} />
           </Paper>
         </Grid>
       </Grid>

@@ -36,7 +36,7 @@ export const secondaryListItems = (
     <ListSubheader inset>Saved reports</ListSubheader>
     <ListItem
       button
-      onClick={() => Router.push("/report/chart", undefined, { shallow: true })}
+      onClick={() => Router.push("/report", undefined, { shallow: true })}
     >
       <ListItemIcon>
         <AssignmentIcon />
