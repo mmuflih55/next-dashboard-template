@@ -9,15 +9,12 @@ module.exports = {
       return acc;
     }, {});
     config.plugins.push(new webpack.DefinePlugin(env));
-    config = {
-      ...config,
-      resolve: {
-        alias: {
-          "~": path.resolve(__dirname, "src/"),
-          "@": path.resolve(__dirname, "src/components/"),
-          Utils: path.resolve(__dirname, "src/utils/"),
-        },
-      },
+    config.resolve.alias = {
+      ...(config.resolve.alias || {}),
+      // custom webpack aliases
+      "~": path.resolve(__dirname, "src/"),
+      "@": path.resolve(__dirname, "src/components/"),
+      Utils: path.resolve(__dirname, "src/utils/"),
     };
     return config;
   },
