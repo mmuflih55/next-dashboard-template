@@ -1,8 +1,10 @@
 import Head from "next/head";
-import useAuth from "Utils/firebase/helper";
+import { useUser } from "Utils/auth/hooks";
 import Report from "@/modules/Report";
 
 export default function Home() {
+  const user = useUser({ redirectTo: "/login" });
+
   return (
     <div className="container">
       <Head>
@@ -10,7 +12,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>{useAuth(Report, { page: 1 })}</main>
+      <main>
+        <Report page={1} />
+      </main>
     </div>
   );
 }

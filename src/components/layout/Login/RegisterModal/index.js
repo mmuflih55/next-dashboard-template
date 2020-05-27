@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -6,16 +6,8 @@ import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
-import {
-  TextField,
-  Typography,
-  //   FormControlLabel,
-  Dialog,
-  Button,
-} from "@material-ui/core";
-
+import { TextField, Typography, Dialog, Button } from "@material-ui/core";
 import { useModal } from "~/context/ModalContext";
-import { auth } from "Utils/firebase";
 
 const styles = (theme) => ({
   root: {
@@ -71,27 +63,27 @@ export default function RegisterModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    let regis = auth
-      .createUserWithEmailAndPassword(state.email, state.password)
-      .then((regis) => {
-        console.log("regis");
-        console.log(regis);
-        let resp = auth
-          .signInWithEmailAndPassword(state.email, state.password)
-          .then((s) => {
-            console.log("login");
-            console.log(s);
-          })
-          .catch(function (error) {
-            // var errorCode = error.code;
-            var errorMessage = error.message;
-            if (errorMessage) alert(errorMessage);
-          });
-      })
-      .catch(function (error) {
-        var errorMessage = error.message;
-        if (errorMessage) alert(errorMessage);
-      });
+    // let regis = auth
+    //   .createUserWithEmailAndPassword(state.email, state.password)
+    //   .then((regis) => {
+    //     console.log("regis");
+    //     console.log(regis);
+    //     let resp = auth
+    //       .signInWithEmailAndPassword(state.email, state.password)
+    //       .then((s) => {
+    //         console.log("login");
+    //         console.log(s);
+    //       })
+    //       .catch(function (error) {
+    //         // var errorCode = error.code;
+    //         var errorMessage = error.message;
+    //         if (errorMessage) alert(errorMessage);
+    //       });
+    //   })
+    //   .catch(function (error) {
+    //     var errorMessage = error.message;
+    //     if (errorMessage) alert(errorMessage);
+    //   });
   };
 
   const handleClickOpen = () => {

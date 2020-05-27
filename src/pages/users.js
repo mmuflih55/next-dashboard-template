@@ -1,8 +1,10 @@
 import Head from "next/head";
-import useAuth from "Utils/firebase/helper";
+import { useUser } from "Utils/auth/hooks";
 import Users from "@/modules/Users";
 
 export default function UsersPage() {
+  const user = useUser({ redirectTo: "/login" });
+
   return (
     <div className="container">
       <Head>
@@ -10,7 +12,7 @@ export default function UsersPage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>{useAuth(Users)}</main>
+      <main>{user && <Users />}</main>
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
 import {
   AppBar,
+  Button,
   Toolbar,
   Typography,
   IconButton,
@@ -127,6 +127,14 @@ export default function Dashboard({ open, setOpen }) {
             <Notifications />
           </Badge>
         </IconButton>
+        <Button
+          component="a"
+          href="api/logout"
+          variant="outlined"
+          color="inherit"
+        >
+          Log Out
+        </Button>
       </Toolbar>
     </AppBar>
   );

@@ -13,27 +13,47 @@ import {
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import RegisterModal from "@/layout/Login/RegisterModal";
 import { ModalProvider, useModal } from "~/context/ModalContext";
-import { auth } from "Utils/firebase";
+import Router from "next/router";
 
 export default function SignIn() {
   const [loginState, setLoginState] = useState({ username: "", password: "" });
   const handleInputChange = (e) => {
     setLoginState({ ...loginState, [e.target.name]: e.target.value });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(e);
-    auth
-      .signInWithEmailAndPassword(loginState.email, loginState.password)
-      .then((v) => {
-        console.log("login");
-        console.log(v);
-      })
-      .catch(function (error) {
-        // var errorCode = error.code;
-        var errorMessage = error.message;
-        if (errorMessage) alert(errorMessage);
+    // console.log(e);
+    // auth
+    //   .signInWithEmailAndPassword(loginState.email, loginState.password)
+    //   .then((v) => {
+    //     console.log("login");
+    //     console.log(v);
+    //   })
+    //   .catch(function (error) {
+    //     // var errorCode = error.code;
+    //     var errorMessage = error.message;
+    //     if (errorMessage) alert(errorMessage);
+    //   });
+    const body = {
+      username: loginState.email,
+      password: loginState.password,
+    };
+
+    try {
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
       });
+      if (res.status === 200) {
+        Router.push("/");
+      } else {
+        throw new Error(await res.text());
+      }
+    } catch (error) {
+      console.error("An unexpected error happened occurred:", error);
+      console.log(error.message);
+    }
   };
 
   const OpenModal = () => {
